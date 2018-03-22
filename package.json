@@ -1,6 +1,10 @@
 {
   "name": "temerair_react",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ehouguet/temerair_site_react.git"
+  },
   "private": true,
   "dependencies": {
     "react": "^16.2.0",

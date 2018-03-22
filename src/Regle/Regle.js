@@ -4,7 +4,7 @@ class Regle extends Component {
   render() {
     return (
       <div>
-        regle
+        modifier regle
       </div>
     );
   }

@@ -25,8 +25,8 @@ const piecesImage = {
     QG: imgP1QG,
   },
   p2: {
-    AA: imgP2A_A, // eslint-disable-line camelcase
-    AB: imgP2A_B, // eslint-disable-line camelcase
+    A_A: imgP2A_A, // eslint-disable-line camelcase
+    A_B: imgP2A_B, // eslint-disable-line camelcase
     dist: imgP2Dist,
     pion: imgP2Pion,
     QG: imgP2QG,
@@ -48,7 +48,7 @@ class Piece extends Component {
       return null;
     }
     return (
-      <img className={style.pieceImg} src={this.state.piecesImage[this.props.piece.player][this.props.piece.type]}/>
+      <img className="piece-img" src={this.state.piecesImage[this.props.piece.player][this.props.piece.type]} alt={'piece de type '+this.props.piece.type}/>
     );
   }
 

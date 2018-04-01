@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import style from './piece.css';
 
 import imgP1A_A from './p1-A_A.png'; // eslint-disable-line camelcase
 import imgP1A_B from './p1-A_B.png'; // eslint-disable-line camelcase
@@ -13,6 +14,7 @@ import imgP2Dist from './p2-dist.png';
 import imgP2Pion from './p2-pion.png';
 import imgP2QG from './p2-QG.png';
 
+console.log('style : ', style);
 
 const piecesImage = {
   p1: {
@@ -46,7 +48,7 @@ class Piece extends Component {
       return null;
     }
     return (
-      <img src={this.state.piecesImage[this.props.piece.player][this.props.piece.type]}/>
+      <img className={style.pieceImg} src={this.state.piecesImage[this.props.piece.player][this.props.piece.type]}/>
     );
   }
 

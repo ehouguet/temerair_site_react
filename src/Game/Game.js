@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import socket from 'socket.io-client';
 import Piece from './Piece/Piece.js';
+import './Game.css';
 
 class Game extends Component {
 
@@ -21,6 +22,7 @@ class Game extends Component {
         },
         isTurnOfP1: true,
       },
+      select_color: '',
     };
 
     this.socket = socket('localhost:3011');
@@ -34,15 +36,13 @@ class Game extends Component {
         <div className="recrutement">
           <table>
             <tbody>
-              {this.state.plateau.p1.toPut.map(function(reserveItem, i) {
-                return (
-                  <tr key={i}>
-                    <td ng-style="plateauCtrl.isSelect(piece_res_j1) ? plateauCtrl.info_parti.select_color : {}" ng-click="plateauCtrl.reserve_action(piece_res_j1)">
-                      <Piece piece={reserveItem}/>
-                    </td>
-                  </tr>
-                );
-              })}
+              {this.state.plateau.p1.toPut.map((reserveItem, i) => (
+                <tr key={i}>
+                  <td className={this.getColor(reserveItem)} onClick={(e) => this.reserveAction(reserveItem, e)}>
+                    <Piece piece={reserveItem}/>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -52,18 +52,16 @@ class Game extends Component {
           <table>
             <tbody>
               
-              {this.state.plateau.plateauAir.map(function(rowAir, i) {
-                return (
-                  <tr key={i}>
-                    <td ng-style="plateauCtrl.isSelect(ligne[2]) ? plateauCtrl.info_parti.select_color : {}" ng-click="plateauCtrl.action(ligne[2])">
-                      <Piece piece={rowAir[2].piece}/>
-                    </td>
-                    <td ng-style="plateauCtrl.isSelect(ligne[3]) ? plateauCtrl.info_parti.select_color : {}" ng-click="plateauCtrl.action(ligne[3])">
-                      <Piece piece={rowAir[3].piece}/>
-                    </td>
-                  </tr>
-                );
-              })}
+              {this.state.plateau.plateauAir.map((rowAir, i) => (
+                <tr key={i}>
+                  <td className={this.getColor(rowAir[2])} onClick={(e) => this.action(rowAir[2], e)}>
+                    <Piece piece={rowAir[2].piece}/>
+                  </td>
+                  <td className={this.getColor(rowAir[3])} onClick={(e) => this.action(rowAir[3], e)}>
+                    <Piece piece={rowAir[3].piece}/>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -73,7 +71,7 @@ class Game extends Component {
           <table>
             <tbody>
               <tr ng-repeat="ligne in plateauCtrl.plateauTerre">
-                <td ng-repeat="cellule in ligne" ng-style="plateauCtrl.isSelect(cellule) ? plateauCtrl.info_parti.select_color : {}" ng-click="plateauCtrl.action(cellule)">
+                <td ng-repeat="cellule in ligne" ng-style="plateauCtrl.isSelect(cellule) ? plateauCtrl.state.select_color : {}" ng-click="plateauCtrl.action(cellule)">
                   <img ng-if="cellule.piece != null"
                     src='img/piece/{{cellule.piece.joueur}}-{{cellule.piece.type}}.png'/>
                 </td>
@@ -87,7 +85,7 @@ class Game extends Component {
           <table>
             <tbody>
               <tr ng-repeat="ligne in plateauCtrl.plateauMer">
-                <td ng-repeat="cellule in ligne" ng-style="plateauCtrl.isSelect(cellule) ? plateauCtrl.info_parti.select_color : {}" ng-click="plateauCtrl.action(cellule)">
+                <td ng-repeat="cellule in ligne" ng-style="plateauCtrl.isSelect(cellule) ? plateauCtrl.state.select_color : {}" ng-click="plateauCtrl.action(cellule)">
                   <img ng-if="cellule.piece != null"
                     src='img/piece/{{cellule.piece.joueur}}-{{cellule.piece.type}}.png'/>
                 </td>
@@ -101,11 +99,11 @@ class Game extends Component {
           <table>
             <tbody>
               <tr ng-repeat="ligne in plateauCtrl.plateauAir">
-                <td ng-style="plateauCtrl.isSelect(ligne[0]) ? plateauCtrl.info_parti.select_color : {}" ng-click="plateauCtrl.action(ligne[0])">
+                <td ng-style="plateauCtrl.isSelect(ligne[0]) ? plateauCtrl.state.select_color : {}" ng-click="plateauCtrl.action(ligne[0])">
                   <img ng-if="ligne[0].piece != null"
                     src='img/piece/{{ligne[0].piece.joueur}}-{{ligne[0].piece.type}}.png'/>
                 </td>
-                <td ng-style="plateauCtrl.isSelect(ligne[1]) ? plateauCtrl.info_parti.select_color : {}" ng-click="plateauCtrl.action(ligne[1])">
+                <td ng-style="plateauCtrl.isSelect(ligne[1]) ? plateauCtrl.state.select_color : {}" ng-click="plateauCtrl.action(ligne[1])">
                   <img ng-if="ligne[1].piece != null"
                     src='img/piece/{{ligne[1].piece.joueur}}-{{ligne[1].piece.type}}.png'/>
                 </td>
@@ -119,7 +117,7 @@ class Game extends Component {
           <table>
             <tbody>
               <tr ng-repeat="piece_res_j2 in plateauCtrl.reserve.j2">
-                <td ng-style="plateauCtrl.isSelect(piece_res_j2) ? plateauCtrl.info_parti.select_color : {}" ng-click="plateauCtrl.reserve_action(piece_res_j2)">
+                <td ng-style="plateauCtrl.isSelect(piece_res_j2) ? plateauCtrl.state.select_color : {}" ng-click="plateauCtrl.reserve_action(piece_res_j2)">
                   <img src='img/piece/{{piece_res_j2.joueur}}-{{piece_res_j2.type}}.png'/>
                 </td>
               </tr>
@@ -149,6 +147,37 @@ class Game extends Component {
       },
     });
 
+  }
+  
+  action(cell) {
+    console.log('-------------------- nouvelle action --------------------------');
+    if (cell.piece != null) {
+      if (   (( this.state.plateau.isTurnOfP1) && (cell.piece.joueur == 'p1'))
+         || ((!this.state.plateau.isTurnOfP1) && (cell.piece.joueur == 'p2'))) {
+        console.log('select une nouvelle cellule');
+        this.state.cellSelect = cell;
+        return;
+      }
+    }
+    if (this.state.cellSelect) {
+      console.log('action sur le pion');
+      console.log("cell d'origine :");
+      console.log(this.state.cellSelect);
+      console.log('cell de destination :');
+      console.log(cell);
+      // PlateauService.action(this.state.cellSelect, cell);
+    }
+     
+  }
+  reserveAction(piece) {
+    console.log('action sur reserve');
+    if (   (( this.state.plateau.isTurnOfP1) && (piece.joueur == 'p1'))
+       || ((!this.state.plateau.isTurnOfP1) && (piece.joueur == 'p2'))) {
+      this.state.cellSelect = piece;
+    }
+  }
+  getColor(cell) {
+    return cell == this.state.cellSelect ? 'cell-selected' : '';
   }
 }
 

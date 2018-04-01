@@ -1,0 +1,37 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "extends": ["plugin:react/recommended"],
+    "rules": {
+        "block-scoped-var": "error",
+        "init-declarations": ["error", "never"],
+        "indent": ["error", 2],
+        "no-shadow": "error",
+        "no-undef": "error",
+        "no-undef-init": "error",
+        "no-use-before-define": "error",
+        "camelcase": "error",
+        "comma-dangle": ["error", "always-multiline"],
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "func-call-spacing": ["error", "never"],
+        "quotes": ["error", "prefer-single"],
+        "semi": ["error", "always"],
+
+        "arrow-parens": ["error", "always"],
+        "arrow-spacing": ["error", { "before": false, "after": false }],
+        "no-var": "error",
+        // "refer-const": "error",
+        
+        "jsx-quotes": ["error", "prefer-double"],
+        "react/jsx-uses-vars": "error"
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}

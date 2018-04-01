@@ -3,6 +3,8 @@ import socket from 'socket.io-client';
 import Piece from './Piece/Piece.js';
 import './Game.css';
 
+const CELL_SELECTED_CLASS = 'cell-selected';
+
 class Game extends Component {
 
   constructor(props) {
@@ -53,7 +55,7 @@ class Game extends Component {
             <tbody>
               {this.state.plateau.plateauAir.map((rowAir, i) => (
                 <tr key={i}>
-                  <td className={this.getColor(rowAir[2], this.state.cellSelect)} onClick={(e) => this.action(rowAir[2], e)}>
+                  <td className={rowAir[2] === this.state.cellSelect ? CELL_SELECTED_CLASS : ''} onClick={(e) => this.action(rowAir[2], e)}>
                     <Piece piece={rowAir[2].piece}/>
                   </td>
                   <td className={this.getColor(rowAir[3], this.state.cellSelect)} onClick={(e) => this.action(rowAir[3], e)}>
@@ -153,6 +155,7 @@ class Game extends Component {
         },
         isTurnOfP1: plateau.isTurnOfP1,
       },
+      cellSelect: null,
     });
 
   }
@@ -160,8 +163,8 @@ class Game extends Component {
   action(cell) {
     console.log('-------------------- nouvelle action --------------------------');
     if (cell.piece != null) {
-      if (   (( this.state.plateau.isTurnOfP1) && (cell.piece.joueur === 'p1'))
-         || ((!this.state.plateau.isTurnOfP1) && (cell.piece.joueur === 'p2'))) {
+      if (   (( this.state.plateau.isTurnOfP1) && (cell.piece.player === 'p1'))
+         || ((!this.state.plateau.isTurnOfP1) && (cell.piece.player === 'p2'))) {
         console.log('select une nouvelle cellule');
         this.setState({ cellSelect: cell });
         return;
@@ -173,14 +176,14 @@ class Game extends Component {
       console.log(this.state.cellSelect);
       console.log('cell de destination :');
       console.log(cell);
-      // PlateauService.action(this.state.cellSelect, cell);
+      this.socket.emit('plateau:action', this.state.cellSelect, cell);
     }
      
   }
   reserveAction(piece) {
     console.log('action sur reserve');
-    if (   (( this.state.plateau.isTurnOfP1) && (piece.joueur === 'p1'))
-       || ((!this.state.plateau.isTurnOfP1) && (piece.joueur === 'p2'))) {
+    if (   (( this.state.plateau.isTurnOfP1) && (piece.player === 'p1'))
+       || ((!this.state.plateau.isTurnOfP1) && (piece.player === 'p2'))) {
         this.setState({ cellSelect: piece });
     }
   }

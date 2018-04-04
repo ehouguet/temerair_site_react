@@ -4,11 +4,14 @@ import Piece from './Piece/Piece.js';
 import './Game.css';
 
 const CELL_SELECTED_CLASS = 'cell-selected';
+const URL_LOCAL = '25.65.8.242:3010';
+const URL_MULTI = '25.65.8.242:3011';
 
 class Game extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       plateau: {
         plateauTerre: [],
@@ -27,7 +30,7 @@ class Game extends Component {
       select_color: '',
     };
 
-    this.socket = socket('localhost:3011');
+    this.socket = socket(props.isMulti ? URL_MULTI : URL_LOCAL);
 
     this.socket.on('plateau:reset', this.setPlateau.bind(this));
   }

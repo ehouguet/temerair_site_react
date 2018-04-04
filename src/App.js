@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Regle from './Regle/Regle';
 import Home from './Home/Home';
-import Game from './Game/Game';
+import PageGame from './PageGame/PageGame';
 import './style.css';
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
           <div className="page-body">
             <Route exact path="/" component={Home}/>
             <Route path="/regle" component={Regle}/>
-            <Route path="/game" component={Game}/>
+            <Route path="/game" component={PageGame}/>
           </div>
         </div>
       </Router>

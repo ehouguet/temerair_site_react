@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import socket from 'socket.io-client';
 import Piece from './Piece/Piece.js';
-import './Game.css';
+import gameStyle from './Game.css';
 
 const CELL_SELECTED_CLASS = 'cell-selected';
-const URL_LOCAL = '25.65.8.242:3010';
-const URL_MULTI = '25.65.8.242:3011';
+const URL_LOCAL = 'localhost:3011';
+const URL_MULTI = 'localhost:3010';
 
 class Game extends Component {
 
@@ -37,7 +37,7 @@ class Game extends Component {
 
   render() {
     return (
-      <div>
+      <div className={gameStyle.game}>
         <div className="recrutement">
           <table>
             <tbody>

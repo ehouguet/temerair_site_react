@@ -1,79 +1,82 @@
 /****************************/
 /* mise en forme du tableau */
 /****************************/
-td {
+:local(.game) td {
     border: 1px solid black;
 }
-table {
+:local(.game) table {
 	border-collapse: collapse;
     border: 2px solid black;
 }
 
 /* mise specifique au plateau */
-.plateau {
+:local(.game) .plateau {
 	display: inline-block;
 	vertical-align: top;
 
 	height: 40vw;
-}.plateau table {
+}:local(.game) .plateau table {
 	width: 100%;
 	height: 100%;
-}.plateau tr {
+}:local(.game) .plateau tr {
 	text-align: center;
 	height: 12.5%;
 }
-.ta {
+:local(.game) .ta {
 	width: 10%;
-}.ta_left {
+}:local(.game) .ta_left {
 	margin-left: 2%;
 	margin-right: 2%;
-}.ta_right {
+}:local(.game) .ta_right {
 	margin-left: 2%;
 	margin-right: 2%;
-}.ta td {
+}:local(.game) .ta td {
 	padding: auto;
 	width: 50%;
 }
-.tt, .tm {
+:local(.game) .tt, 
+:local(.game) .tm {
 	width: 20%;
 	height: 40vw;
 	margin-top: 2%;
 	margin-right: 0%;
 	margin-left: 0%;
 }
-.tt td, .tm td {
+:local(.game) .tt td, 
+:local(.game) .tm td {
 	width: 25%;
 }
 
-.tt td:nth-child(2), .tm td:nth-child(2) {
+:local(.game) .tt td:nth-child(2), 
+:local(.game) .tm td:nth-child(2) {
     border-right: 2px solid black;
 }
 
 /* colorisaton */
-.ta tr:nth-child(2n) td:nth-child(2n),
-.ta tr:nth-child(2n+1) td:nth-child(2n+1) {
+:local(.game) .ta tr:nth-child(2n) td:nth-child(2n),
+:local(.game) .ta tr:nth-child(2n+1) td:nth-child(2n+1) {
 	background-color: #DDDDDD;
 }
-.ta tr:nth-child(2n) td:nth-child(2n+1),
-.ta tr:nth-child(2n+1) td:nth-child(2n) {
+:local(.game) .ta tr:nth-child(2n) td:nth-child(2n+1),
+:local(.game) .ta tr:nth-child(2n+1) td:nth-child(2n) {
 	background-color: #BBBBBB;
 }
 
-.tt tr:nth-child(2n) td:nth-child(2n),
-.tt tr:nth-child(2n+1) td:nth-child(2n+1) {
+:local(.game) .tt tr:nth-child(2n) td:nth-child(2n),
+:local(.game) .tt tr:nth-child(2n+1) td:nth-child(2n+1) {
 	background-color: #DDFFDD;
 }
-.tt tr:nth-child(2n) td:nth-child(2n+1),
-.tt tr:nth-child(2n+1) td:nth-child(2n) {
+:local(.game) .tt tr:nth-child(2n) td:nth-child(2n+1),
+:local(.game) .tt tr:nth-child(2n+1) td:nth-child(2n) {
 	background-color: #BBFFBB;
 }
 
-.tm tr:nth-child(2n) td:nth-child(2n),
-.tm tr:nth-child(2n+1) td:nth-child(2n+1) {
+:local(.game) .tm tr:nth-child(2n) td:nth-child(2n),
+:local(.game) .tm tr:nth-child(2n+1) td:nth-child(2n+1) {
 	background-color: #DDDDFF;
 }
-.tm tr:nth-child(2n) td:nth-child(2n+1),
-.tm tr:nth-child(2n+1) td:nth-child(2n) {
+:local(.game) .tm tr:nth-child(2n) td:nth-child(2n+1),
+:local(.game) .tm tr:nth-child(2n+1) td:nth-child(2n) {
 	background-color: #BBBBFF;
 }
 
@@ -81,7 +84,7 @@ table {
 /* recrutement              */
 /****************************/
 
-.recrutement {
+:local(.game) .recrutement {
 	display: inline-block;
 	vertical-align: top;
 
@@ -91,13 +94,13 @@ table {
 	width: 8%;
 	margin-left: 1%;
 	margin-right: 1%;
-}.recrutement table {
+}:local(.game) .recrutement table {
 	margin-right: auto;
 	margin-left: auto;
 	width: 100%;
-}.recrutement tr {
+}:local(.game) .recrutement tr {
 	width: 8%;
-}.recrutement td {
+}:local(.game) .recrutement td {
 	width: 50%;
 	text-align: center;
 }
@@ -106,6 +109,6 @@ table {
 /* cell selected            */
 /****************************/
 
-.cell-selected {
+:local(.game) .cell-selected {
     background-color: rgba(255,100,0,0.3) !important;
 }

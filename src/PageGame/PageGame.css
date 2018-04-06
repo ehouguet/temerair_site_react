@@ -1,0 +1,22 @@
+:local(.pageGame) .header {
+    height: 30vh;
+    width: 100%
+}
+:local(.pageGame) .body {
+    height: 70vh;
+}
+
+:local(.pageGame) .game {
+    display: inline-block;
+    /* width: 80vw; */
+}
+
+:local(.pageGame) .menu-right {
+    display: inline-block;
+}
+
+:local(.pageGame) .list-joueur {
+}
+
+:local(.pageGame) .chat {
+}

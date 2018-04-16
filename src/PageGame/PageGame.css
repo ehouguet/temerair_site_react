@@ -1,18 +1,22 @@
 :local(.pageGame) .header {
-    height: 30vh;
+    background-color: darkblue;
+    height: 20vh;
     width: 100%
 }
 :local(.pageGame) .body {
-    height: 70vh;
+    height: 80vh;
 }
 
 :local(.pageGame) .game {
-    display: inline-block;
-    /* width: 80vw; */
+    float: left;
+    width: 80vw;
 }
 
 :local(.pageGame) .menu-right {
-    display: inline-block;
+    background-color: darkgreen;
+    float: right;
+    width: 20vw;
+    height: 100%;
 }
 
 :local(.pageGame) .list-joueur {

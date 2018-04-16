@@ -1,3 +1,8 @@
+:local(.game) {
+	margin-left: 8%;
+	margin-top: 3vh;
+}
+
 /****************************/
 /* mise en forme du tableau */
 /****************************/
@@ -14,7 +19,7 @@
 	display: inline-block;
 	vertical-align: top;
 
-	height: 40vw;
+	height: 70vh;
 }:local(.game) .plateau table {
 	width: 100%;
 	height: 100%;
@@ -37,7 +42,7 @@
 :local(.game) .tt, 
 :local(.game) .tm {
 	width: 20%;
-	height: 40vw;
+	height: 70vh;
 	margin-top: 2%;
 	margin-right: 0%;
 	margin-left: 0%;

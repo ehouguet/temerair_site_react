@@ -24,3 +24,8 @@
 
 :local(.pageGame) .chat {
 }
+
+:local(.pageGame) .gameHide {
+    display: none;
+}
+

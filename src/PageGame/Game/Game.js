@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import socket from 'socket.io-client';
 import Piece from './Piece/Piece.js';
 import gameStyle from './Game.css';
 
 const CELL_SELECTED_CLASS = 'cell-selected';
-const URL_LOCAL = 'localhost:3011';
-const URL_MULTI = 'localhost:3010';
 
 class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.socket = props.socket;
 
     this.state = {
       plateau: {
@@ -29,8 +28,6 @@ class Game extends Component {
       },
       select_color: '',
     };
-
-    this.socket = socket(props.isMulti ? URL_MULTI : URL_LOCAL);
 
     this.socket.on('plateau:reset', this.setPlateau.bind(this));
   }

@@ -15,10 +15,12 @@ class App extends Component {
             <div><Link to="/regle">Regle</Link></div>
             <div><Link to="/Game">Game</Link></div>
           </div>
+         
           <div className="page-body">
             <Route exact path="/" component={Home}/>
             <Route path="/regle" component={Regle}/>
             <Route path="/game" component={Game}/>
+           
           </div>
         </div>
       </Router>

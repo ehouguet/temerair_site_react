@@ -14,8 +14,6 @@ import imgP2Dist from './p2-dist.png';
 import imgP2Pion from './p2-pion.png';
 import imgP2QG from './p2-QG.png';
 
-console.log('style : ', style);
-
 const piecesImage = {
   p1: {
     A_A: imgP1A_A, // eslint-disable-line camelcase
@@ -48,7 +46,7 @@ class Piece extends Component {
       return null;
     }
     return (
-      <img className="piece-img" src={this.state.piecesImage[this.props.piece.player][this.props.piece.type]} alt={'piece de type '+this.props.piece.type}/>
+      <img className={style.pieceimg} src={this.state.piecesImage[this.props.piece.player][this.props.piece.type]} alt={'piece de type '+this.props.piece.type}/>
     );
   }
 

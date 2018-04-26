@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import socket from 'socket.io-client';
 import Piece from './Piece/Piece.js';
-import './Game.css';
+import gameStyle from './Game.css';
 
 const CELL_SELECTED_CLASS = 'cell-selected';
 
@@ -9,6 +8,9 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
+
+    this.socket = props.socket;
+
     this.state = {
       plateau: {
         plateauTerre: [],
@@ -27,14 +29,12 @@ class Game extends Component {
       select_color: '',
     };
 
-    this.socket = socket('localhost:3011');
-
     this.socket.on('plateau:reset', this.setPlateau.bind(this));
   }
 
   render() {
     return (
-      <div>
+      <div className={gameStyle.game}>
         <div className="recrutement">
           <table>
             <tbody>

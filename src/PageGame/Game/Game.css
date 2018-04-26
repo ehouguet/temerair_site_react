@@ -1,0 +1,119 @@
+:local(.game) {
+	margin-left: 8%;
+	margin-top: 3vh;
+}
+
+/****************************/
+/* mise en forme du tableau */
+/****************************/
+:local(.game) td {
+    border: 1px solid black;
+}
+:local(.game) table {
+	border-collapse: collapse;
+    border: 2px solid black;
+}
+
+/* mise specifique au plateau */
+:local(.game) .plateau {
+	display: inline-block;
+	vertical-align: top;
+
+	height: 70vh;
+}:local(.game) .plateau table {
+	width: 100%;
+	height: 100%;
+}:local(.game) .plateau tr {
+	text-align: center;
+	height: 12.5%;
+}
+:local(.game) .ta {
+	width: 10%;
+}:local(.game) .ta_left {
+	margin-left: 2%;
+	margin-right: 2%;
+}:local(.game) .ta_right {
+	margin-left: 2%;
+	margin-right: 2%;
+}:local(.game) .ta td {
+	padding: auto;
+	width: 50%;
+}
+:local(.game) .tt, 
+:local(.game) .tm {
+	width: 20%;
+	height: 70vh;
+	margin-top: 2%;
+	margin-right: 0%;
+	margin-left: 0%;
+}
+:local(.game) .tt td, 
+:local(.game) .tm td {
+	width: 25%;
+}
+
+:local(.game) .tt td:nth-child(2), 
+:local(.game) .tm td:nth-child(2) {
+    border-right: 2px solid black;
+}
+
+/* colorisaton */
+:local(.game) .ta tr:nth-child(2n) td:nth-child(2n),
+:local(.game) .ta tr:nth-child(2n+1) td:nth-child(2n+1) {
+	background-color: #DDDDDD;
+}
+:local(.game) .ta tr:nth-child(2n) td:nth-child(2n+1),
+:local(.game) .ta tr:nth-child(2n+1) td:nth-child(2n) {
+	background-color: #BBBBBB;
+}
+
+:local(.game) .tt tr:nth-child(2n) td:nth-child(2n),
+:local(.game) .tt tr:nth-child(2n+1) td:nth-child(2n+1) {
+	background-color: #DDFFDD;
+}
+:local(.game) .tt tr:nth-child(2n) td:nth-child(2n+1),
+:local(.game) .tt tr:nth-child(2n+1) td:nth-child(2n) {
+	background-color: #BBFFBB;
+}
+
+:local(.game) .tm tr:nth-child(2n) td:nth-child(2n),
+:local(.game) .tm tr:nth-child(2n+1) td:nth-child(2n+1) {
+	background-color: #DDDDFF;
+}
+:local(.game) .tm tr:nth-child(2n) td:nth-child(2n+1),
+:local(.game) .tm tr:nth-child(2n+1) td:nth-child(2n) {
+	background-color: #BBBBFF;
+}
+
+/****************************/
+/* recrutement              */
+/****************************/
+
+:local(.game) .recrutement {
+	display: inline-block;
+	vertical-align: top;
+
+	background-color: #EEEEEE;
+	text-align: center;
+
+	width: 8%;
+	margin-left: 1%;
+	margin-right: 1%;
+}:local(.game) .recrutement table {
+	margin-right: auto;
+	margin-left: auto;
+	width: 100%;
+}:local(.game) .recrutement tr {
+	width: 8%;
+}:local(.game) .recrutement td {
+	width: 50%;
+	text-align: center;
+}
+
+/****************************/
+/* cell selected            */
+/****************************/
+
+:local(.game) .cell-selected {
+    background-color: rgba(255,100,0,0.3) !important;
+}

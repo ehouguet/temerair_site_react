@@ -9,7 +9,7 @@
 
 :local(.pageGame) .game {
     float: left;
-    width: 80vw;
+    width: 79vw;
 }
 
 :local(.pageGame) .menu-right {

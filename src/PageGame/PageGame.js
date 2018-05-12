@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Game from './Game/Game';
+import Players from './Players/Players';
+import Rename from './Rename/Rename';
 import pageGameStyle from './PageGame.css';
 import { Container, Row, Col } from 'reactstrap';
 import socketIO from 'socket.io-client';
@@ -28,7 +30,9 @@ class PageGame extends Component {
     return (
       <Container className={pageGameStyle.pageGame}>
         <Row className="header">
-          <Col></Col>
+          <Col>
+            <Rename socket={this.state.socket}/>
+          </Col>
         </Row>
         <Row className="body">
           <Col className="game">
@@ -41,7 +45,9 @@ class PageGame extends Component {
             </div>
           </Col>
           <Col className="menu-right">
-            <Row className="list-joueur"></Row>
+            <Row className="list-joueur">
+              <Players socket={this.state.socket}/>
+            </Row>
             <Row className="chat"></Row>
           </Col>
         </Row>

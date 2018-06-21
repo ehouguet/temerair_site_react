@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import playersStyle from './Players.css';
 
 class Home extends Component {
     
@@ -16,16 +17,18 @@ class Home extends Component {
 
   render() {
     return (
-      <table>
-        <tbody>
-          {this.state.players.map((player) => (
-            <tr>
-              <td>{player.name || 'player'+player.id}</td>
-              <td>{player.state}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className={playersStyle.players}>
+        <table>
+          <tbody>
+            {this.state.players.map((player) => (
+              <tr>
+                <td>{player.name || 'player'+player.id}</td>
+                <td>{player.state}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }

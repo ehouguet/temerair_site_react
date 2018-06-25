@@ -24,6 +24,11 @@ class PageGame extends Component {
     };
 
     socket.on('partie:start', () => this.setState({ gameState: 'game' }) );
+    socket.on('partie:exit', (playerIdGotOut) => {
+      alert(`le joueur ${playerIdGotOut} a quiter la partie.`);
+      this.setState({ gameState: 'choice' });
+     });
+    
   }
 
   render() {

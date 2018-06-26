@@ -27,7 +27,12 @@ class PageGame extends Component {
     socket.on('partie:exit', (playerIdGotOut) => {
       alert(`le joueur ${playerIdGotOut} a quiter la partie.`);
       this.setState({ gameState: 'choice' });
-     });
+    });
+    socket.on('plateau:victoire', (playerWinner) => {
+      let color = playerWinner==='p1' ? 'orange' : 'rouge';
+      alert(`le joueur ${color} a gagné la partie.`);
+      this.setState({ gameState: 'choice' });
+    });
     
   }
 

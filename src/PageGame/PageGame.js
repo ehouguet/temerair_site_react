@@ -24,14 +24,19 @@ class PageGame extends Component {
     };
 
     socket.on('partie:start', () => this.setState({ gameState: 'game' }) );
-    socket.on('partie:exit', (playerIdGotOut) => {
-      alert(`le joueur ${playerIdGotOut} a quiter la partie.`);
+    socket.on('partie:exit', (playerNameGotOut) => {
+      alert(`le joueur ${playerNameGotOut} a quiter la partie.`);
       this.setState({ gameState: 'choice' });
     });
     socket.on('plateau:victoire', (playerWinner) => {
       let color = playerWinner==='p1' ? 'orange' : 'rouge';
       alert(`le joueur ${color} a gagné la partie.`);
       this.setState({ gameState: 'choice' });
+    });
+
+    socket.on('player:requestMatch', (playerName) => {
+      let wantPlay = window.confirm(`le joueur ${playerName} veux vous affronter.`);
+      socket.emit(wantPlay ? 'player:requestMatchAccept' : 'player:requestMatchReject');
     });
     
   }
@@ -47,7 +52,7 @@ class PageGame extends Component {
         <Row className="body">
           <Col className="game">
             {{
-              choice:(<div><button onClick={this.lunchLocalGame.bind(this)}>local</button><button onClick={this.lunchMultiGame.bind(this)}>multi</button></div>),
+              choice:(<div><button onClick={() => this.lunchLocalGame.bind(this)}>local</button><button onClick={this.lunchMultiGame.bind(this)}>multi</button></div>),
               wait:(<div>wait</div>),
             }[this.state.gameState]}
             <div className={this.state.gameState === 'game' ? '' : 'gameHide'}>

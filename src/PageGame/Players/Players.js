@@ -24,12 +24,17 @@ class Home extends Component {
               <tr>
                 <td>{player.name || 'player'+player.id}</td>
                 <td>{player.state}</td>
+                <td><button onClick={() => this.requestMatch.bind(this)(player)}>match</button></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
     );
+  }
+
+  requestMatch(player) {
+    this.socket.emit('players:request', player.id);
   }
 }
 

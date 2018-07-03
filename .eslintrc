@@ -25,7 +25,6 @@
         "arrow-parens": ["error", "always"],
         "arrow-spacing": ["error", { "before": false, "after": false }],
         "no-var": "error",
-        // "refer-const": "error",
         
         "jsx-quotes": ["error", "prefer-double"],
         "react/jsx-uses-vars": "error"

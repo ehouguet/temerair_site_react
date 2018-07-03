@@ -52,7 +52,7 @@ class PageGame extends Component {
         <Row className="body">
           <Col className="game">
             {{
-              choice:(<div><button onClick={() => this.lunchLocalGame.bind(this)}>local</button><button onClick={this.lunchMultiGame.bind(this)}>multi</button></div>),
+              choice:(<div><button onClick={() => this.lunchLocalGame.bind(this)()}>local</button><button onClick={() => this.lunchMultiGame.bind(this)()}>multi</button></div>),
               wait:(<div>wait</div>),
             }[this.state.gameState]}
             <div className={this.state.gameState === 'game' ? '' : 'gameHide'}>
@@ -71,12 +71,12 @@ class PageGame extends Component {
   }
 
   lunchLocalGame() {
-    console.log('this : ', this);
+    console.log('request a local game.');
     this.state.socket.emit('player:playLocal');
     this.setState({ gameState: 'wait' });
   }
   lunchMultiGame() {
-    console.log('this : ', this);
+    console.log('request a local game.');
     this.state.socket.emit('player:playMulti');
     this.setState({ gameState: 'wait' });
   }

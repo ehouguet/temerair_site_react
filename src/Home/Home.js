@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import './Home.css';
-import Image from './fond.png';
+import fondrouge from './fondrouge.bmp';
+import fondvert from './fondvert.bmp';
+import fondbleu from './fondbleu.bmp';
+import trait from './trait3.bmp';
+import avion from './Avion.svg';
+import bateau from './bateau.svg';
+import char from './Char2.svg';
 
 class Home extends Component {
   render() {
     return (
       <div className="background">
 
-        <img src ={Image} width="100%" alt="background"
-        useMap="#Areas"/>
-
-        <map name="Areas">
-          <area shape="poly" coords = "0,0,0,1000,290,1000,630,365,100,0" alt="Game" href="../Game/Game.js"></area>
-          <area shape="circle" coords="90,58,3" alt="About" href="../About/About.js"></area>
-          <area shape="circle" coords="124,58,8" alt="Contact" href="../Regle/Regle.js"></area>
-        </map>
+      <a href="../PageGame/PageGame.js"><img className="fond" src ={fondrouge} height = "100%" width="100%" alt="background"/></a>
+      <a href="../About/About.js"><img className="fond" src ={fondvert} height = "100%" width="100%" alt="background"/></a>
+      <a href="../Regle/Regle.js"><img className="fond" src ={fondbleu} height = "100%" width="100%" alt="background"/></a>
+      <img className="fond" src ={trait} height = "100%" width="100%" alt="background"/>
+      <img className="fond" src ={char} height = "85%" left= "-500px" alt="background"/>
+      <img className="fond" src ={avion} height = "100%" width="100%" alt="background"/>
+      <img className="fond" src ={bateau} height = "100%" width="100%" alt="background"/>
 
       </div>
     );

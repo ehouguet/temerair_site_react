@@ -13,13 +13,10 @@ class Home extends Component {
     return (
       <div className="background">
 
-      <a href="../PageGame/PageGame.js"><img className="fond" src ={fondrouge} height = "100%" width="100%" alt="background"/></a>
-      <a href="../About/About.js"><img className="fond" src ={fondvert} height = "100%" width="100%" alt="background"/></a>
-      <a href="../Regle/Regle.js"><img className="fond" src ={fondbleu} height = "100%" width="100%" alt="background"/></a>
-      <img className="fond" src ={trait} height = "100%" width="100%" alt="background"/>
-      <img className="fond" src ={char} height = "85%" left= "-500px" alt="background"/>
-      <img className="fond" src ={avion} height = "100%" width="100%" alt="background"/>
-      <img className="fond" src ={bateau} height = "100%" width="100%" alt="background"/>
+      <a href="../PageGame/PageGame.js"><img className="fond" src ={fondrouge} height = "100%" width="100%" alt="background" z-index="2"/></a>
+      <a href="../About/About.js"><img className="fond" src ={fondvert} height = "100%" width="100%" alt="background" z-index="1"/></a>
+      <a href="../Regle/Regle.js"><img className="fond" src ={fondbleu} height = "100%" width="100%" alt="background" z-index="0"/></a>
+      <img className="fond" src ={trait} height = "100%" width="100%" alt="background" z-index="3"/>
 
       </div>
     );

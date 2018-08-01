@@ -9,14 +9,16 @@
 
 :local(.pageGame) .game {
     float: left;
-    width: 80vw;
+    width: 79vw;
 }
 
 :local(.pageGame) .menu-right {
-    background-color: darkgreen;
-    float: right;
+    color: white;
+    background-color: grey;
     width: 20vw;
     height: 100%;
+    position: absolute;
+    right: 0;
 }
 
 :local(.pageGame) .list-joueur {

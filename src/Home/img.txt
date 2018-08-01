@@ -1,0 +1,4 @@
+
+      <img className="fond" src ={char} height = "85%" left= "-500px" alt="background"/>
+      <img className="fond" src ={avion} height = "100%" width="100%" alt="background"/>
+      <img className="fond" src ={bateau} height = "100%" width="100%" alt="background"/>

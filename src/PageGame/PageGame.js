@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Game from './Game/Game';
+import Players from './Players/Players';
+import Rename from './Rename/Rename';
 import pageGameStyle from './PageGame.css';
 import { Container, Row, Col } from 'reactstrap';
 import socketIO from 'socket.io-client';
@@ -22,18 +24,35 @@ class PageGame extends Component {
     };
 
     socket.on('partie:start', () => this.setState({ gameState: 'game' }) );
+    socket.on('partie:exit', (playerNameGotOut) => {
+      alert(`le joueur ${playerNameGotOut} a quiter la partie.`);
+      this.setState({ gameState: 'choice' });
+    });
+    socket.on('plateau:victoire', (playerWinner) => {
+      let color = playerWinner==='p1' ? 'orange' : 'rouge';
+      alert(`le joueur ${color} a gagné la partie.`);
+      this.setState({ gameState: 'choice' });
+    });
+
+    socket.on('player:requestMatch', (playerName) => {
+      let wantPlay = window.confirm(`le joueur ${playerName} veux vous affronter.`);
+      socket.emit(wantPlay ? 'player:requestMatchAccept' : 'player:requestMatchReject');
+    });
+    
   }
 
   render() {
     return (
       <Container className={pageGameStyle.pageGame}>
         <Row className="header">
-          <Col></Col>
+          <Col>
+            <Rename socket={this.state.socket}/>
+          </Col>
         </Row>
         <Row className="body">
           <Col className="game">
             {{
-              choice:(<div><button onClick={this.lunchLocalGame.bind(this)}>local</button><button onClick={this.lunchMultiGame.bind(this)}>multi</button></div>),
+              choice:(<div><button onClick={() => this.lunchLocalGame.bind(this)()}>local</button><button onClick={() => this.lunchMultiGame.bind(this)()}>multi</button></div>),
               wait:(<div>wait</div>),
             }[this.state.gameState]}
             <div className={this.state.gameState === 'game' ? '' : 'gameHide'}>
@@ -41,7 +60,9 @@ class PageGame extends Component {
             </div>
           </Col>
           <Col className="menu-right">
-            <Row className="list-joueur"></Row>
+            <Row className="list-joueur">
+              <Players socket={this.state.socket}/>
+            </Row>
             <Row className="chat"></Row>
           </Col>
         </Row>
@@ -50,12 +71,12 @@ class PageGame extends Component {
   }
 
   lunchLocalGame() {
-    console.log('this : ', this);
+    console.log('request a local game.');
     this.state.socket.emit('player:playLocal');
     this.setState({ gameState: 'wait' });
   }
   lunchMultiGame() {
-    console.log('this : ', this);
+    console.log('request a local game.');
     this.state.socket.emit('player:playMulti');
     this.setState({ gameState: 'wait' });
   }

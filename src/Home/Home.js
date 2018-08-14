@@ -17,7 +17,9 @@ class Home extends Component {
       <a href="../About/About.js"><img className="fond" src ={fondvert} height = "100%" width="100%" alt="background" z-index="1"/></a>
       <a href="../Regle/Regle.js"><img className="fond" src ={fondbleu} height = "100%" width="100%" alt="background" z-index="0"/></a>
       <img className="fond" src ={trait} height = "100%" width="100%" alt="background" z-index="3"/>
-
+      <img className="fond" src ={avion} height = "100%" width="100%" alt="background" z-index="3"/>
+      <img className="fond" src ={bateau} height = "100%" width="100%" alt="background" z-index="3"/>
+      <img className="fond" src ={char} height = "85%" width="75%" alt="background"/>
       </div>
     );
   }

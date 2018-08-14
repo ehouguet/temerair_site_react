@@ -1,13 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'; import './Regle.css'; 
+import { Link } from 'react-router-dom';
+
 
 class Regle extends Component {
   render() {
     return (
-      <div>
-        <h2>Témérair</h2>
-        <h3>Description générale</h3>
-        <p>Téméraire (terre, mer, air) est un jeu de stratégie combinatoire abstrait à information parfaite conçu et développé à partir de 2011 par Adrien et Elouan Houguet.</p>
-        <h3>Matériel</h3>
+    <div className = "fondR">
+      <header>
+<h1>Témérair</h1>
+</header>
+
+<div className="menu">
+  <a className="menu_link" href="#Description">Description générale</a>
+  <a className="menu_link" href="#Plateaux">Plateaux</a>
+  <a className="menu_link" href="#Deroulement">Déroulement du jeu</a>
+  <a className="menu_link" href="#Deplacements">Déplacements et capacités des pièces</a>
+</div>
+
+<div className = "script">
+        <h3 id="Description">Description générale</h3>
+        <p>Témérair (terre, mer, air) est un jeu de stratégie combinatoire abstrait à information parfaite conçu et développé à partir de 2011 par Adrien et Elouan Houguet.</p>
+        <h3 id="Plateaux">Plateaux</h3>
           <ul>
             <li>3 plateaux
               <ul>
@@ -24,7 +37,7 @@ class Regle extends Component {
                 <li>6 pentagones (3 foncés et 3 clairs)</li>
               </ul></li>
             </ul>
-          <h3>Déroulement du jeu</h3>
+          <h3 id="Deroulement">Déroulement du jeu</h3>
             <h4>Mise en place</h4>
               <p>Le jeu oppose deux joueurs ou deux équipes.</p>
               <p>Les joueurs s'accordent pour choisir la couleur des pièces (soit claires, soit foncées) qui leur appartiendront. Le joueur possédant les pièces foncées commence la partie.</p>
@@ -49,7 +62,7 @@ class Regle extends Component {
               <p>Pour éliminer le pentagone de l'adversaire ou pour défendre le leur les joueurs auront à leur disposition des pièces avec des déplacements et des capacités différentes. Ces pièces pourront aussi éliminer d'autres pièces adverses ou se faire éliminer par d'autres pièces de l'adversaire.</p>   
               <p>Lorsqu'une pièce est éliminée elle est retirée du jeu.</p>
 
-<h3>Déplacements et capacités des pièces</h3>
+<h3 id="Deplacements">Déplacements et capacités des pièces</h3>
 <h4>Rond</h4>
 <p>Le rond ne peut se déplacer, si rien l'en empêche (pièces adverses ou pièces de sa couleur), que d’une seule case vers l’adversaire, soit en diagonale ou soit par la case située en face de lui.</p>
 <p>Il peut éliminer une pièce adverse en se positionnant, dans la limite de ses déplacements, sur la case ou se situe la pièce de l’adversaire.</p>
@@ -73,6 +86,12 @@ class Regle extends Component {
 <p>Il peut éliminer une pièce adverse en se positionnant, dans la limite de ses déplacements, sur la case ou se situe la pièce.</p>
 <p>Le pentagone peut rapatrier les pièces d'un plateau inactif gagné par le joueur sur une des cases adjacentes au pentagone, soit à gauche, à droite, en haut ou en bas.</p>
       </div>
+
+<div className = "footer">
+<p>Témérair©</p>
+</div>
+
+    </div>
     );
   }
 }

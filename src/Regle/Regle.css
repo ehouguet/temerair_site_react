@@ -1,0 +1,66 @@
+.fondR{
+    background-image: url("./fondvertR.bmp");
+    width: 100%;
+}
+
+.script{
+
+background-color: #a8c4a4;
+width:70%;
+margin:0 auto;
+padding: 2.5%;
+text-align: justify;
+
+border-style: none solid;
+border-width: 1%;
+border-color: blanchedalmond;
+}
+
+header{
+    background-color: #a8c4a4;
+    width:70%;
+    margin:0 auto;
+    padding: 2.5%;
+    text-align: center;
+    border-bottom: 1px solid blanchedalmond ;
+
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 1%;
+    border-color: blanchedalmond;
+}
+
+.menu{
+     list-style-type: none;
+     padding:0;
+     width:75%;
+     margin: 0 auto;
+     text-decoration: none;
+     border-style: none solid;
+    border-width: 1%;
+    border-color: blanchedalmond;
+ }
+ 
+ .menu_link{
+      background-color: #799576; 
+      color: white; 
+      text-decoration: none;
+      border-bottom: 1px solid blanchedalmond;
+
+      text-decoration: none;
+      display: block;
+      height: 40px;
+      text-align: center; 
+      line-height: 40px; 
+ }
+
+ .footer {
+    background-color: #799576; 
+    width:70%;
+    margin:0 auto;
+    padding: 2.5%;
+    text-align: center; 
+    border-style: none solid;
+    border-width: 1%;
+    border-color: blanchedalmond;
+ }

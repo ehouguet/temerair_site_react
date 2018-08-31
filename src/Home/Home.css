@@ -1,14 +1,22 @@
-/*.background{
-    
-    background-image: url("fond.png");
-    background-repeat: no-repeat, repeat;
-    background-size: 100%;
+.background{
     height: 100%;
-
-}*/
+}
 
 .fond{
-
     position:absolute;
+}
 
+.terre {
+    fill: rgb(179, 137, 137);
+}
+.mer {
+    fill: rgb(118, 133, 196);
+}
+.air {
+    fill: rgb(130, 157, 127);
+}
+.trait {
+    fill: none;
+    stroke: black;
+    stroke-width: 10px;
 }

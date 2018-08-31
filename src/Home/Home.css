@@ -20,3 +20,12 @@
     stroke: black;
     stroke-width: 10px;
 }
+
+.smoke {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: url('http://res.cloudinary.com/da51wkm4r/image/upload/v1461143297/title/smoke.png') no-repeat;
+    bottom: 150px;
+    margin-left: 0px
+}

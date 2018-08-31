@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
+import random_seed from '../share/random_seed'
+import smoke from './smoke.png';
 
 import avionFile from './avion.svg';
 import bateauFile from './bateau.svg';
@@ -47,16 +49,22 @@ class Home extends Component {
 
     let height_mv = this.state.height + this.MOVEMENT;
     let width_mv = this.state.width + this.MOVEMENT;
+
+    let smokes = [];
+    let rng = new random_seed(10);
+    for(let i=0; i<1100; i++) {
+      let size = rng.nextRange(50, 300);
+      smokes.push(
+        <g key={i}
+        transform={`translate(${rng.nextRange(-width_mv/2-200, width_mv/2)}, ${rng.nextRange(-height_mv/2-200, height_mv/2)})`} 
+        className="smoke">
+          <image href={smoke} x="0" y="0" height={size} width={size}/>
+        </g>
+      )
+    }
+
     return (
       <div id="home-svg-container" className="background">
-
-      {/* <a href="../PageGame/PageGame.js"><img className="fond" src ={fondrouge} height="100%" width="100%" alt="background" z-index="2"/></a>
-      <a href="../About/About.js"><img className="fond" src ={fondvert} height="100%" width="100%" alt="background" z-index="1"/></a>
-      <a href="../Regle/Regle.js"><img className="fond" src ={fondbleu} height="100%" width="100%" alt="background" z-index="0"/></a>
-      <img className="fond" src={trait} height="100%" width="100%" alt="background" z-index="3"/>
-      <img className="fond" src={avion} height="100%" width="100%" alt="background" z-index="3"/>
-      <img className="fond" src={bateau} height="100%" width="100%" alt="background" z-index="3"/>
-      <img className="fond" src={char} height="85%" width="75%" alt="background"/> */}
         <svg width={this.state.width} height={this.state.height}>
           <g transform={`translate(${this.state.width / 2}, ${this.state.height / 2})`}>
             <path 
@@ -86,6 +94,7 @@ class Home extends Component {
               `} 
               onClick={() => this.onClickMenu.bind(this)("/regle")}>
             </path>
+            <g className="smokes">{smokes}</g>
             <path 
               className="trait"
               d={`M0 0
@@ -96,10 +105,12 @@ class Home extends Component {
               L${width_mv / 2} ${height_mv * this.P2_RAPPORT_Y}
               `} >
             </path>
+            <g transform={`translate(${-this.state.width/2}, ${-this.state.height/2})`}>
+              <g transform={`scale(${this.state.width / this.AVION_WIDTH})`} dangerouslySetInnerHTML={{__html: this.state.avionSvg}}></g>
+              <g transform={`scale(${this.state.width / this.BATEAU_WIDTH}) translate(0, ${this.state.height*1/10})`} dangerouslySetInnerHTML={{__html: this.state.bateauSvg}}></g>
+              <g transform={`scale(${this.state.width / this.CHAR_WIDTH * 2 / 3}) translate(${-this.state.width*1/8}, ${this.state.height*1/5})`} dangerouslySetInnerHTML={{__html: this.state.charSvg}}></g>
+            </g>
           </g>
-            <g transform={`scale(${this.state.width / this.AVION_WIDTH})`} dangerouslySetInnerHTML={{__html: this.state.avionSvg}}></g>
-            <g transform={`scale(${this.state.width / this.BATEAU_WIDTH}) translate(0, ${this.state.height*1/10})`} dangerouslySetInnerHTML={{__html: this.state.bateauSvg}}></g>
-            <g transform={`scale(${this.state.width / this.CHAR_WIDTH * 2 / 3}) translate(${-this.state.width*1/8}, ${this.state.height*1/5})`} dangerouslySetInnerHTML={{__html: this.state.charSvg}}></g>
         </svg>
       </div>
     );
